@@ -7,8 +7,7 @@ function App() {
     { id: 2, completed: false, title: 'Buy car' },
     { id: 3, completed: false, title: 'Buy home' },
     { id: 4, completed: false, title: 'Buy woman' },
-    { id: 5, completed: false, title: 'Buy milk' },
-    { id: 6, completed: false, title: 'Buy butter' }
+    { id: 5, completed: false, title: 'Buy milk' }
   ];
   return (
     <div className='wrapper'>

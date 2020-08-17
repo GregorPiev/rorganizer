@@ -9,6 +9,7 @@ function App() {
     { id: 4, completed: false, title: 'Buy woman' },
     { id: 5, completed: false, title: 'Buy milk' },
     { id: 6, completed: false, title: 'Buy butter' }
+
   ];
   return (
     <div className='wrapper'>

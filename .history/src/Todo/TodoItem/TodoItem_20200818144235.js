@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './TodoItem.css';
-import Context from '../../context';
 
 function TodoItem({ todo, index, onChange }) {
-    const { removeTodo } = React.useContext(Context);
     const classes = [];
     if (todo.completed === true) {
         classes.push('done');
@@ -20,7 +18,7 @@ function TodoItem({ todo, index, onChange }) {
                 <strong>{index + 1}.</strong>&nbsp;
                 {todo.title}
             </span>
-            <button className="rb" onClick={removeTodo.bind(null, todo.id)}>&times;</button>
+            <button className="rb">&times;</button>
 
         </li>
     )

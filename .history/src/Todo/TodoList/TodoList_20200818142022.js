@@ -9,12 +9,7 @@ function TodoList(props) {
         <ul className="ul_base">
             {
                 props.todos.map((todo, index) => {
-                    return <TodoItem
-                        key={todo.id}
-                        todo={todo}
-                        index={index}
-                        onChange={props.onToggle}
-                    />
+                    return <TodoItem key={todo.id} todo={todo} index={index} onChange={props.onToggle} />
                 })
             }
         </ul>

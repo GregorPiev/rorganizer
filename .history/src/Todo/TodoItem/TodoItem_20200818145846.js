@@ -20,7 +20,7 @@ function TodoItem({ todo, index, onChange }) {
                 <strong>{index + 1}.</strong>&nbsp;
                 {todo.title}
             </span>
-            <button className="rb" onClick={removeTodo.bind(null, todo.id)}>&times;</button>
+            <button className="rb" onClick={() => removeTodo(todo.id)}>&times;</button>
 
         </li>
     )

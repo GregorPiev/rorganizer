@@ -1,0 +1,18 @@
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+input {
+  margin-right: 1rem;
+}
+.rb {
+  background: #f00;
+  background-repeat: 25%;
+  color: #ffffff;
+  border: none;
+}

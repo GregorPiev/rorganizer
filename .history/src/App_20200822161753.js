@@ -3,7 +3,6 @@ import TodoList from './Todo/TodoList/TodoList'
 import Context from './context';
 // import AddToDo from './Todo/AddTodo/AddTodo';
 import Loader from './Loader/Loader';
-import Modal from './Modal/Modal';
 
 const AddTodo = React.lazy(() => import('./Todo/AddTodo/AddTodo.js'))
 
@@ -50,13 +49,10 @@ function App() {
     <Context.Provider value={{ removeTodo: removeTodo }}>
       <div className="wrapper">
         <h1>React Tutorial</h1>
-        <Modal />
-
-
-
-        <React.Suspense fallback={<p>Loading...</p>}>
+        <React.Suspense>
           <AddTodo onCreate={addTodo} />
         </React.Suspense>
+
 
         {loading
           ? <Loader />

@@ -17,7 +17,7 @@ function TodoItem({ todo, index }) {
                     checked={todo.completed}
                     onChange={() => dispatch({
                         type: 'toggle',
-                        payload: todo.id
+                        id: todo.id
                     })}
                 />
                 <strong>{index + 1}.</strong>&nbsp;
@@ -27,9 +27,9 @@ function TodoItem({ todo, index }) {
                 () => {
                     dispatch({
                         type: 'remove',
-                        payload: todo.id
+                        id: todo.id
                     })
-                }}>&times;</button>
+                }>&times;</button>
 
         </li>
     )

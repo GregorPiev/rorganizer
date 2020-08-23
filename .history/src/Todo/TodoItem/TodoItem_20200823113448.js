@@ -4,7 +4,7 @@ import './TodoItem.css';
 import Context from '../../context';
 
 function TodoItem({ todo, index }) {
-    const { dispatch } = React.useContext(Context);
+    const { removeTodo, toggleTodo } = React.useContext(Context);
     const classes = [];
     if (todo.completed === true) {
         classes.push('done');
@@ -15,21 +15,12 @@ function TodoItem({ todo, index }) {
                 <input
                     type='checkbox'
                     checked={todo.completed}
-                    onChange={() => dispatch({
-                        type: 'toggle',
-                        payload: todo.id
-                    })}
+                    onChange={() => toggleTodo(todo.id)}
                 />
                 <strong>{index + 1}.</strong>&nbsp;
                 {todo.title}
             </span>
-            <button className="rb" onClick={
-                () => {
-                    dispatch({
-                        type: 'remove',
-                        payload: todo.id
-                    })
-                }}>&times;</button>
+            <button className="rb" onClick={removeTodo.bind(null, todo.id)}>&times;</button>
 
         </li>
     )

@@ -16,6 +16,7 @@ function App() {
       fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
         .then(response => response.json())
     );
+    console.log('todoData:', response);
     dispatch({
       type: 'init',
       payload: response
@@ -27,12 +28,34 @@ function App() {
   }, []);
 
   useEffect(() => {
+    console.log('state 1:', state);
+    console.log('state 1b:', state.length);
+
+
+    console.log('loading 1:', loading);
+
+    //
     if (state.length) {
-      setLoading(false);
+      // setLoading(false);
+      console.log('state 2:', state[0].todos);
+      console.log('loading 2:', loading);
     }
   }, [state, loading])
 
+  /* function toggleTodo(id) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed
+        }
+        return todo
+      }),
+    )
+  }
 
+  function removeTodo(id) {
+    setTodos(todos.filter(todo => todo.id !== id));
+  } */
 
   function addTodo(title) {
     dispatch({
@@ -43,7 +66,8 @@ function App() {
 
   return (
     <Context.Provider value={{
-      dispatch
+      /* removeTodo,
+      toggleTodo */
     }}>
       <div className="wrapper">
         <h1>React Tutorial</h1>

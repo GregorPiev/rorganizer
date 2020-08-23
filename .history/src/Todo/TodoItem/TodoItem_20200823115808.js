@@ -15,21 +15,12 @@ function TodoItem({ todo, index }) {
                 <input
                     type='checkbox'
                     checked={todo.completed}
-                    onChange={() => dispatch({
-                        type: 'toggle',
-                        payload: todo.id
-                    })}
+                    onChange={() => toggleTodo(todo.id)}
                 />
                 <strong>{index + 1}.</strong>&nbsp;
                 {todo.title}
             </span>
-            <button className="rb" onClick={
-                () => {
-                    dispatch({
-                        type: 'remove',
-                        payload: todo.id
-                    })
-                }}>&times;</button>
+            <button className="rb" onClick={removeTodo.bind(null, todo.id)}>&times;</button>
 
         </li>
     )

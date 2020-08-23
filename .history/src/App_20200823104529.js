@@ -8,31 +8,37 @@ import reducer from './reducer';
 const AddTodo = React.lazy(() => import('./Todo/AddTodo/AddTodo.js'))
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, []);
+  const [state, dispatch] = useReducer(reducer, initTodos);
   const [loading, setLoading] = React.useState(true);
 
   async function initTodos() {
-    const response = await (
-      fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
-        .then(response => response.json())
-    );
-    dispatch({
-      type: 'init',
-      payload: response
-    })
+    await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .then(response => response.json())
   }
 
   useEffect(() => {
-    initTodos();
-  }, []);
-
-  useEffect(() => {
-    if (state.length) {
+    console.log('state:', state);
+    console.log('loading 1:', loading);
+    if (state) {
       setLoading(false);
+      console.log('loading 2:', loading);
     }
   }, [state, loading])
 
+  /* function toggleTodo(id) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed
+        }
+        return todo
+      }),
+    )
+  }
 
+  function removeTodo(id) {
+    setTodos(todos.filter(todo => todo.id !== id));
+  } */
 
   function addTodo(title) {
     dispatch({
@@ -43,7 +49,8 @@ function App() {
 
   return (
     <Context.Provider value={{
-      dispatch
+      /* removeTodo,
+      toggleTodo */
     }}>
       <div className="wrapper">
         <h1>React Tutorial</h1>
@@ -54,8 +61,8 @@ function App() {
 
         {loading
           ? <Loader />
-          : state.length
-            ? <TodoList todos={state} />
+          : state.todos
+            ? <TodoList todos={state.todos} />
             : <p>No todos</p>
         }
 

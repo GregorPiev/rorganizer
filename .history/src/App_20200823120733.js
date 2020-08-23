@@ -16,6 +16,7 @@ function App() {
       fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
         .then(response => response.json())
     );
+    console.log('todoData:', response);
     dispatch({
       type: 'init',
       payload: response
@@ -27,8 +28,17 @@ function App() {
   }, []);
 
   useEffect(() => {
+    console.log('state 1:', state);
+    console.log('state 1b:', state.length);
+
+
+    console.log('loading 1:', loading);
+
+    //
     if (state.length) {
       setLoading(false);
+      console.log('state 2:', state);
+      console.log('loading 2:', loading);
     }
   }, [state, loading])
 
